@@ -1,17 +1,18 @@
 
 > <strong>Useful Resources</strong>: [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset//)
 
-`kubectl config use-context kubernetes-admin@kubernetes`{{exec}}
-
 <br>
 
-The `lonely-wolf` is deployed, but only 2 replicas, why is pending?
-Inst there a better thing? Instead of a deployment, change to daemonset :)
-
+The `lonely-wolf` Deployment is running, but due anti‑affinity one pod is in `Pending`.  
+To ensure "one pod per node" and long term maintainability change it to a **DaemonSet**.
 
 **Specifications:**
-- Use the topology key: `kubernetes.io/hostname`
-- Ensure the deployment can also be schedule on controlplane node
+- Delete the `lonely-wolf` Deployment
+- Create a DaemonSet named `lonely-wolf-ds`
+- Run on **all** nodes (including controlplane)
 
 **Info:**
 - By design controlplane nodes are tainted, what can be done to circumvent it?
+
+**Verification:**  
+`kubectl get pods -o wide` – one running pod on each node, zero `Pending`.
