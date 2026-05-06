@@ -1,6 +1,6 @@
 {
     "title": "Affinity",
-    "description": "Create Deployment with Affinity strategy",
+    "description": "Create Deployment with Affinity and Anti-affinity strategy",
     "details": {
       "intro": {
         "text": "intro.md",
