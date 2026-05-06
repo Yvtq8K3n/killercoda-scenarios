@@ -1,26 +1,10 @@
 #!/bin/bash
 
-cat <<EOF > lonely-wolf.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: lonely-wolf
-  name: lonely-wolf
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: lonely-wolf
-  strategy: {}
-  template:
-    metadata:
-      labels:
-        app: lonely-wolf
-    spec:
-      containers:
-      - image: nginx
-        name: nginx
-        resources: {}
-status: {}
+kubectl apply -f - <<EOF
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: worker
+- role: worker
 EOF
