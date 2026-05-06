@@ -4,6 +4,6 @@
 <br>
 
 Change the `web-deploy` deployment with the following specifications:
-1. Update the deployment to **image:** `nginx:1.22` (use `kubectl set` or manually edit deployment)
-1. Watch the rollout progress (use `kubectl rollout status`).
-2. Save the rollout history of the Deployment to `/opt/rollout2.log`
+1. Update the deployment to **image:** `nginx:1.22` (`kubectl set` or `kubectl edit`)
+1. Watch the rollout progress (`kubectl rollout status`).
+2. Save the deployment rollout history to `/opt/rollout2.log`

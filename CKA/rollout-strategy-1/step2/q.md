@@ -4,11 +4,11 @@
 <br>
 
 Perform the following actions on `web-deploy` deployment:
-1. Check the Deployment rollout history
-2. Scale the Deployment to **5 replicas**.
+1. Check the deployment rollout history
+2. Scale the deployment to **5 replicas**.
 3. Wait for rollout to complete (use `k rollout status <command>`).
 4. Save the rollout history of the Deployment to `/opt/rollout.log`
 
-Question:
-**Why is the rollout history unchanged and no Rolling Update was triggered?** 
+**Question:**
+Why is the rollout history unchanged and no Rolling Update was triggered?
 - Rollout update is only triggerd during a application-level change

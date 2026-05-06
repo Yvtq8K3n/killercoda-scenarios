@@ -2,4 +2,4 @@
 
 ### WELL DONE !
 
-You solved this Architecture, Installation & Maintenance Challenges!
+You solved this Rollout Strategy Challenges!
