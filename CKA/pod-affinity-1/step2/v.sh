@@ -7,20 +7,20 @@ if kubectl get deployment lonely-wolf &>/dev/null; then
 fi
 
 # 2. Check DaemonSet exists
-if ! kubectl get daemonset lonely-wolf-ds &>/dev/null; then
-    echo -e "DaemonSet 'lonely-wolf-ds' not found"
+if ! kubectl get daemonset lonely-wolf &>/dev/null; then
+    echo -e "DaemonSet 'lonely-wolf' not found"
     exit 1
 fi
 
 # 3. Check image (should be nginx:latest or just nginx)
-image=$(kubectl get daemonset lonely-wolf-ds -o jsonpath='{.spec.template.spec.containers[0].image}')
+image=$(kubectl get daemonset lonely-wolf -o jsonpath='{.spec.template.spec.containers[0].image}')
 if [[ "$image" != "nginx"* ]]; then
     echo -e "Image is '$image', expected nginx:latest or similar"
     exit 1
 fi
 
 # 4. Check toleration for controlplane
-toleration=$(kubectl get daemonset lonely-wolf-ds -o jsonpath='{.spec.template.spec.tolerations}')
+toleration=$(kubectl get daemonset lonely-wolf -o jsonpath='{.spec.template.spec.tolerations}')
 if [[ -z "$toleration" ]]; then
     echo -e "No tolerations found – DaemonSet will not schedule on controlplane"
     exit 1
@@ -39,10 +39,10 @@ nodes=$(kubectl get nodes -o jsonpath='{.items[*].metadata.name}')
 node_count=$(echo "$nodes" | wc -w)
 
 # Get pods from DaemonSet
-pods=$(kubectl get pods -l app=lonely-wolf-ds -o json)  # assuming label matches; fallback to owner reference
+pods=$(kubectl get pods -l app=lonely-wolf -o json)  # assuming label matches; fallback to owner reference
 if [ -z "$(echo "$pods" | jq '.items[0]')" ]; then
     # Try fallback: get pods owned by DaemonSet
-    pods=$(kubectl get pods -o json | jq -r '.items[] | select(.metadata.ownerReferences[]?.name=="lonely-wolf-ds")')
+    pods=$(kubectl get pods -o json | jq -r '.items[] | select(.metadata.ownerReferences[]?.name=="lonely-wolf")')
 fi
 
 running_pods=$(echo "$pods" | jq -r 'select(.status.phase=="Running")' | jq -s 'length')

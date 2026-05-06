@@ -3,12 +3,12 @@
 
 <br>
 
-The `lonely-wolf` Deployment is running, but due anti‑affinity one pod is in `Pending`.  
+The `lonely-wolf` Deployment is running, but due anti‑affinity one pod is in `Pending` state.  
 To ensure "one pod per node" and long term maintainability change it to a **DaemonSet**.
 
 **Specifications:**
 - Delete the `lonely-wolf` Deployment
-- Create a DaemonSet named `lonely-wolf-ds`
+- Create a DaemonSet named `lonely-wolf`
 - Run on **all** nodes (including controlplane)
 
 **Info:**
