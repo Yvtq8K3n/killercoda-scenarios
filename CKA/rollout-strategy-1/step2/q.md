@@ -11,4 +11,4 @@ Perform the following actions on `web-deploy` deployment:
 
 **Question:**
 Why is the rollout history unchanged and Rolling Update wasn't triggered?
-- Rollout update is only triggerd during a application-level change
+- Rollout update is only triggered during a application-level change
