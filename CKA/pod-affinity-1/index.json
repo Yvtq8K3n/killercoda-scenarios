@@ -1,6 +1,6 @@
 {
-    "title": "Rollout Strategy",
-    "description": "Create Deployment with RollingUpdate strategy",
+    "title": "Affinity",
+    "description": "Create Deployment with Affinity strategy",
     "details": {
       "intro": {
         "text": "intro.md",
