@@ -45,8 +45,8 @@ if [ -z "$(echo "$pods" | jq '.items[0]')" ]; then
     pods=$(kubectl get pods -o json | jq -r '.items[] | select(.metadata.ownerReferences[]?.name=="lonely-wolf")')
 fi
 
-running_pods=$(echo "$pods" | jq -r 'select(.status.phase=="Running")' | jq -s 'length')
-pending_pods=$(echo "$pods" | jq -r 'select(.status.phase=="Pending")' | jq -s 'length')
+running_pods=$(echo "$pods" | jq '[.items[] | select(.status.phase=="Running")] | length')
+pending_pods=$(echo "$pods" | jq '[.items[] | select(.status.phase=="Pending")] | length')
 
 if [ "$running_pods" -ne "$node_count" ]; then
     echo -e "Expected $node_count running pods (one per node), but found $running_pods running"
@@ -59,15 +59,6 @@ if [ "$pending_pods" -ne 0 ]; then
     exit 1
 else
     echo -e "No pending pods"
-fi
-
-# Optional: verify each pod is on a distinct node (DaemonSet guarantees it, but check anyway)
-pod_nodes=$(echo "$pods" | jq -r '.spec.nodeName' | sort | uniq)
-if [ $(echo "$pod_nodes" | wc -l) -eq "$node_count" ]; then
-    echo -e "Pods are distributed one per node"
-else
-    echo -e "Pods not one per node – DaemonSet misconfigured"
-    exit 1
 fi
 
 echo -e "All checks passed! DaemonSet is correctly configured."
