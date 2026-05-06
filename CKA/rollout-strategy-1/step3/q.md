@@ -3,7 +3,11 @@
 
 <br>
 
-Change Deployment `web-deploy` with the following specifications:
-- **Image:** `nginx:1.22`
+Change the `web-deploy` deployment with the following specifications:
 
-Use command set or manual edit deployment
+
+1. Updage the deployment to **image:** `nginx:1.22` (use `kubectl set` or manually edit deployment)
+1. Watch the rollout progress (use `kubectl rollout <command>`).
+2. Write the final rollout history to `/opt/rollout.log`
+
+
