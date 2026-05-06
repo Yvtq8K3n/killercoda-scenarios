@@ -3,12 +3,12 @@
 
 <br>
 
-Perform the following actions over the `web-deploy` deployment:
-1. Check the deployment rollout history
+Perform the following actions on `web-deploy` deployment:
+1. Check the Deployment rollout history
 2. Scale the Deployment to **5 replicas**.
-3. Wait for rollout to complete (use `kubectl rollout <command>`).
+3. Wait for rollout to complete (use `k rollout status <command>`).
 4. Save the rollout history of the Deployment to `/opt/rollout.log`
 
 Question:
-**Why Rolling Update was not triggerd?** 
-- Rollout update is triggerd during a application-level change
+**Why is the rollout history unchanged and no Rolling Update was triggered?** 
+- Rollout update is only triggerd during a application-level change
