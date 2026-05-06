@@ -7,4 +7,4 @@ For this question, please set this context (In exam, diff cluster name)
 
 <br>
 
-`nginx-pod` pod not running, fix that issue
+Create a pod `nginx-pod` pod not running, fix that issue
