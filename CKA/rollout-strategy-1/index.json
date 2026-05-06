@@ -21,11 +21,6 @@
           "title": "Weight: 2",
           "text": "step3/q.md",
           "verify": "step3/v.sh"
-        },
-        {
-          "title": "Weight: 2",
-          "text": "step4/q.md",
-          "verify": "step4/v.sh"
         }
       ],
       "finish": {

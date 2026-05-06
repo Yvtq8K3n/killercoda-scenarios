@@ -11,7 +11,7 @@ if [[ "$current_image" != "${expected_image}:${expected_version}" ]]; then
 fi
 
 # Check file and its contets
-log_file="/opt/rollout.log"
+log_file="/opt/rollout2.log"
 
 if [ ! -f "$log_file" ]; then
     echo -e "$log_file does not exist${NC}"
