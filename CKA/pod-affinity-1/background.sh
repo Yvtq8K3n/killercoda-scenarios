@@ -19,8 +19,8 @@ spec:
         app: lonely-wolf
     spec:
       containers:
-      - image: busybox
-        name: busybox
+      - image: nginx
+        name: nginx
         resources: {}
 status: {}
 EOF
