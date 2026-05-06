@@ -1,0 +1,28 @@
+{
+    "title": "Rollout Strategy",
+    "description": "Create Deployment with RollingUpdate strategy",
+    "details": {
+      "intro": {
+        "text": "intro.md",
+        "background": "background.sh"
+      },
+      "steps": [
+        {
+          "title": "Weight: 2",
+          "text": "step1/q.md",
+          "verify": "step1/v.sh"
+        },
+        {
+          "title": "Weight: 2",
+          "text": "step2/q.md",
+          "verify": "step2/v.sh"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      }
+    },
+    "backend": {
+      "imageid": "kubernetes-kubeadm-2nodes"
+    }
+}
